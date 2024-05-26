@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ form_action }} Property</h2>
+<form action="/{{ form_action }}_property{% if property %}/{{ property['id'] }}{% endif %}" method="post">
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{ property.title if property else '' }}" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" name="description" required>{{ property.description if property else '' }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="text" class="form-control" id="price" name="price" value="{{ property.price if property else '' }}" required>
+    </div>
+    <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" id="location" name="location" value="{{ property.location if property else '' }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">{{ form_action }}</button>
+</form>
+{% endblock %}

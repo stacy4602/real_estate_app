@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Interested
+{% endblock %}
+
+{% block content %}
+    <h1 style="font-size: 100px;">Property of Interest</h1>
+    <div class="property-details">
+        
+        <p style="font-size: 75px;"><strong>Seller Contact:</strong></p>
+        <ul style="font-size: 50px; background-color: crimson;">
+            <li>Name: {{ sellere.first_name }} {{ sellere.last_name }}</li>
+            <li>Email: {{ sellere.email }}</li>
+            <li>Phone: {{ sellere.phone }}</li>
+        </ul>
+    </div>
+{% endblock %}

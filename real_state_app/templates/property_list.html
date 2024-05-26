@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Properties</h2>
+<form method="get" action="/properties">
+    <div class="form-group">
+        <label for="filter">Filter by location:</label>
+        <input type="text" class="form-control" id="filter" name="filter" value="{{ filter }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+<ul>
+    {% for property in properties %}
+    <li>
+        <h4>{{ property.title }}</h4>
+        <p>{{ property.description }}</p>
+        <p>Price: {{ property.price }}</p>
+        <p>Location: {{ property.location }}</p>
+        {% if session.get('user') and session['user']['role'] == 'buyer' %}
+        <form action="/interested/{{ property.id }}" method="post">
+            <button type="submit" class="btn btn-info">I'm Interested</button>
+        </form>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

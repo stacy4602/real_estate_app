@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+{% if session['user']['role'] == 'seller' %}
+<a class="btn btn-primary" href="/add_property">Add Property</a>
+<h3>Your Properties</h3>
+<ul>
+    {% for property in properties %}
+    <li>{{ property['title'] }} - <a href="/edit_property/{{ property['id'] }}">Edit</a> | <a href="/delete_property/{{ property['id'] }}">Delete</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<h3>Properties</h3>
+<ul>
+    {% for property in properties %}
+    <li>{{ property['title'] }} - <a href="/property/{{ property['id'] }}">View</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
